@@ -16,6 +16,9 @@ jobs:
         run: npm i
       - name: app-build
         run: npm run build
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: data
   deploy:
     needs: build
     runs-on: ubuntu-latest
