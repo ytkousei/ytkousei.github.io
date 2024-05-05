@@ -1,4 +1,6 @@
 ---
+import HeaderMenu from "../components/HeaderMenu.astro";
+
 interface Props {
   title: string;
 }
@@ -17,16 +19,69 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <header>
-      <h1>サイト</h1>
-      <nav>
-        <ul>
-          <li></li>
-        </ul>
-      </nav>
-    </header>
-    <slot />
+    <div class="content">
+      <header class="h-14">
+        <HeaderMenu />
+      </header>
+      <slot />
+    </div>
+    <footer>
+      <p><small>&copy;Copyright</small></p>
+    </footer>
   </body>
 </html>
 
-<style is:global></style>
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
+  * {
+    @apply bg-neutral-900 text-white font-noto-sans-jp;
+  }
+
+  nav.header-menu {
+  }
+
+  body {
+    @apply min-h-screen grid-rows-1 grid;
+  }
+
+  main {
+    @apply bg-neutral-900 text-white m-auto max-w-5xl w-9/12;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl mt-2;
+  }
+
+  h2::before {
+    @apply content-["#"] mr-2 text-neutral-400;
+  }
+
+  h3 {
+    @apply text-2xl mt-2;
+  }
+
+  h3::before {
+    @apply content-["#"] mr-2 text-neutral-400;
+  }
+
+  h4 {
+    @apply text-xl mt-2;
+  }
+
+  h4::before {
+    @apply content-["#"] mr-2 text-neutral-400;
+  }
+
+  body > div.content > header {
+    /* @apply fixed w-screen; */
+  }
+
+  body > footer {
+    @apply row-start-2 row-end-3;
+  }
+</style>
